@@ -43,6 +43,9 @@ func _physics_process(_delta: float) -> void:
 	for body in stuck_bubbles:
 		stick_bubbles(body)
 
+func _award_points(body: Node) -> void:
+	GLOBAL.score += body.point_boost
+
 func _on_body_entered(body: Node) -> void:
 	if body == self:
 		return

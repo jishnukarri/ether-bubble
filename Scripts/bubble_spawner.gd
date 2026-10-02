@@ -9,10 +9,11 @@ var tokens = 0
 func spawn_bubble(radius, x, z) -> void:
 	var bubble = BUBBLE.instantiate()
 	
+	add_child.call_deferred(bubble)
+	await get_tree().process_frame
+	
 	bubble.global_position = Vector3(x, height, z)
 	bubble.radius = radius
-	
-	add_child.call_deferred(bubble)
 
 func wave_loop() -> void:
 	while true:

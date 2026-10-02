@@ -36,7 +36,7 @@ func stick_bubbles(body: RigidBody3D) -> void:
 	
 	apply_central_force(-force)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void: 
 	downward_force = gravity / radius * bubbles_constant
 	apply_central_force(Vector3.DOWN * downward_force)
 	
@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 		stick_bubbles(body)
 
 func _on_body_entered(body: Node) -> void:
-	print("entered")
 	if body == self:
 		return
 	elif body.is_in_group("Bubble"):

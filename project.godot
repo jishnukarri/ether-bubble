@@ -14,6 +14,10 @@ config/name="Bubbles"
 run/main_scene="uid://cf4josvlj3d2h"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
+[autoload]
+
+Globals="*uid://cekthp8hcl8b5"
+
 [display]
 
 window/stretch/mode="canvas_items"

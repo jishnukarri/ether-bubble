@@ -17,7 +17,8 @@ func _input(event):
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if position.y < -50:
-		position.y = 50
+		position.y = 15
+		position.x = 0
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta

@@ -52,7 +52,8 @@ func _on_body_entered(body: Node) -> void:
 	else:
 		stuck_bubbles.clear()
 		queue_free()
-
+		Globals.tokens = Globals.tokens - 1 
+		
 func _on_body_exited(body: Node) -> void:
 	if body == self:
 		return

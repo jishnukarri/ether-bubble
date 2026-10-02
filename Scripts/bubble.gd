@@ -44,7 +44,8 @@ func _physics_process(_delta: float) -> void:
 		stick_bubbles(body)
 
 func _award_points(body: Node) -> void:
-	GLOBAL.score += body.point_boost + radius
+	var points = body.point_boost + radius
+	GLOBAL.score += points
 
 func _on_body_entered(body: Node) -> void:
 	if body == self:

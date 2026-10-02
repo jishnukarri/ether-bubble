@@ -21,27 +21,27 @@ func spawn_bubble(radius, x, z) -> void:
 
 func wave_loop() -> void:
 	while wave <= MAX_WAVES:
-		print("starting loop for waves {wave}")
+		print("starting loop for waves %s" %[wave])
 		var bubbles = randf_range(3,5)
 		wave += 1
-		Globals.tokens += wave * bubbles
+		GLOBAL.tokens += wave * bubbles
 		
-		while Globals.tokens > 0 and Globals.tokens <= 10:
+		while GLOBAL.tokens > 0 and GLOBAL.tokens <= 10:
 			var x = randi_range(-10, 10)
 			var z = randi_range(-10, 10)
 			var radius = randf_range(0.5, 5.0)
 			
-			if Globals.tokens > radius:
+			if GLOBAL.tokens > radius:
 				print("bubble1")
 				spawn_bubble(radius, x, z)
 				print("bubble1")
-				Globals.tokens -= radius
+				GLOBAL.tokens -= radius
 			else:
-				radius = Globals.tokens
+				radius = GLOBAL.tokens
 				print("bubble1")
 				spawn_bubble(radius, x, z)
 				print("bubble1")
-				Globals.tokens = 0
+				GLOBAL.tokens = 0
 		await get_tree().create_timer(25.0).timeout
 func _ready() -> void:
 	wave_loop()

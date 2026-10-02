@@ -8,10 +8,10 @@ var tokens = 0
 
 func spawn_bubble(radius, x, z) -> void:
 	var bubble = BUBBLE.instantiate()
-	get_tree().current_scene.add_child(bubble)
+	get_tree().current_scene.add_child.call_deferred(bubble)
 	
 	bubble.global_position = Vector3(x, height, z)
-	bubble.set_radius(radius)
+	bubble.radius = radius
 	
 func wave_loop() -> void:
 	while true:

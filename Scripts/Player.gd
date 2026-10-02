@@ -12,7 +12,7 @@ func _input(event):
 		var mouse_movement = event.relative
 		if Input.is_action_pressed("drag"):
 			rotate_y(-event.relative.x * mouse_sensitivity)
-			camera.rotation.x -= mouse_movement.y * mouse_sensitivity
+			camera.rotation.x = clamp(camera.rotation.x - mouse_movement.y * mouse_sensitivity, deg_to_rad(-80), deg_to_rad(80))
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

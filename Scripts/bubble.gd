@@ -2,7 +2,7 @@ extends RigidBody3D
 
 const bubbles_constant: = 0.05
 const gravity: = 9.8
-const stick_strength: = 10.0
+const stick_strength: = 100.0
 
 @export var radius: float = 1.0
 
@@ -14,18 +14,15 @@ func _update_size() -> void:
 	$Mesh.mesh.radius = radius
 	$Mesh.mesh.height = radius * 2.0
 	$Collision.shape.radius = radius
-	$Area/Area_Collision.shape.radius = radius
-
-func set_radius(new_radius: float) -> void:
-	radius = new_radius
-	_update_size()
 
 func _ready() -> void:
 	$Mesh.mesh = $Mesh.mesh.duplicate()
 	$Collision.shape = $Collision.shape.duplicate()
-	$Area/Area_Collision.shape = $Area/Area_Collision.shape.duplicate()
 	
 	_update_size()
+	
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
 	
 	downward_force = gravity / radius * bubbles_constant
 
@@ -37,8 +34,7 @@ func stick_bubbles(body: RigidBody3D) -> void:
 	
 	var force = direction.normalized() * displacement * stick_strength
 	
-	apply_central_force(-force)
-	body.apply_central_force(force)
+	apply_central_force(force)
 
 func _physics_process(delta: float) -> void:
 	downward_force = gravity / radius * bubbles_constant
@@ -47,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	for body in stuck_bubbles:
 		stick_bubbles(body)
 
-func _on_area_body_entered(body: Node3D) -> void:
+func _on_body_entered(body: Node) -> void:
 	if body == self:
 		return
 	elif body.is_in_group("Bubble"):
@@ -57,7 +53,7 @@ func _on_area_body_entered(body: Node3D) -> void:
 		stuck_bubbles.clear()
 		queue_free()
 
-func _on_area_body_exited(body: RigidBody3D) -> void:
+func _on_body_exited(body: Node) -> void:
 	if body == self:
 		return
 	elif body in stuck_bubbles:

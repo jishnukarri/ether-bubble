@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bshb1r0me0drk"]
+
+[ext_resource type="Script" uid="uid://6g6oc57f6ou1" path="res://Scripts/bubble.gd" id="1_amq2t"]
+
+[sub_resource type="Shader" id="Shader_fu76k"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled;
+
+uniform sampler2D noise_map : hint_default_white;
+uniform float rainbow_scale : hint_range(0.1, 5.0) = 1.2;
+uniform float animation_speed : hint_range(0.0, 2.0) = 0.1;
+
+vec3 thickness_to_rainbow(float thickness) {
+    float r = sin(thickness * 6.28318 + 0.0) * 0.5 + 0.5;
+    float g = sin(thickness * 6.28318 + 2.0) * 0.5 + 0.5;
+    float b = sin(thickness * 6.28318 + 4.0) * 0.5 + 0.5;
+    return vec3(r, g, b);
+}
+
+void fragment() {
+    ROUGHNESS = 0.015; // Keeps it glass-shiny
+    METALLIC = 0.0;
+    
+    // Animates your baked Blender texture across the surface smoothly
+    vec2 moving_uv = UV + vec2(TIME * animation_speed, TIME * (animation_speed * 0.5));
+    float noise_val = texture(noise_map, moving_uv).r;
+    
+    // Fresnel calculations make the bubble core look hollow and transparent
+    float fresnel = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), 3.0);
+    
+    // Combines inputs to copy Blender's Thin Film light calculations
+    float phase = (noise_val * rainbow_scale) + fresnel;
+    vec3 rainbow = thickness_to_rainbow(phase);
+    
+    ALBEDO = rainbow;
+    EMISSION = rainbow * 0.25; // Soft illumination glow
+    ALPHA = clamp(fresnel + 0.05, 0.0, 1.0);
+    }"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_amq2t"]
+render_priority = 0
+shader = SubResource("Shader_fu76k")
+shader_parameter/rainbow_scale = 1.2
+shader_parameter/animation_speed = 0.15
+
+[sub_resource type="SphereMesh" id="SphereMesh_i1mt7"]
+material = SubResource("ShaderMaterial_amq2t")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yf5fn"]
+
+[node name="Bubble" type="RigidBody3D" unique_id=1915652127 groups=["Bubble"]]
+gravity_scale = 0.0
+script = ExtResource("1_amq2t")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=358238130]
+mesh = SubResource("SphereMesh_i1mt7")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1957732117]
+shape = SubResource("SphereShape3D_yf5fn")
+
+[node name="Area" type="Area3D" parent="." unique_id=1025467936]
+
+[node name="Area_Collision" type="CollisionShape3D" parent="Area" unique_id=802963407]
+shape = SubResource("SphereShape3D_yf5fn")
+
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_area_body_exited"]

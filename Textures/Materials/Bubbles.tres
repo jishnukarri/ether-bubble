@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cutg87ct7e3sn"]
+
+[ext_resource type="Shader" uid="uid://cw2liptfwulj0" path="res://Textures/Shaders/Bubbles.gdshader" id="1_87ktb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_87ktb")

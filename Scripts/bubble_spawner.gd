@@ -1,21 +1,23 @@
 extends Node3D
 
+const MAX_WAVES = 100
+# for each wave random bubbles between 3-5 bubbles spawn in
 const BUBBLE = preload("res://Scenes/bubble.tscn")
 const height = 15
 
 var wave = 0
-const MAX_WAVES = 100
-# for each wave random bubbles between 3-5 bubbles spawn in
 
+
+func _finish_spawn(bubble, x, z) -> void:
+	bubble.global_position = Vector3(x, height, z)
 
 func spawn_bubble(radius, x, z) -> void:
 	var bubble = BUBBLE.instantiate()
+	bubble.radius = radius
 	
 	add_child.call_deferred(bubble)
-	await get_tree().process_frame
+	call_deferred("_finish_spawn", bubble, x, z)
 	
-	bubble.global_position = Vector3(x, height, z)
-	bubble.radius = radius
 
 func wave_loop() -> void:
 	while wave <= MAX_WAVES:

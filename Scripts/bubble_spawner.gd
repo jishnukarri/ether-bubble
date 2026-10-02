@@ -18,9 +18,7 @@ func wave_loop() -> void:
 		wave += 1
 		tokens += wave * 10
 		
-		await get_tree().create_timer(10.0).timeout
-		
-		while tokens > 0:
+		while tokens > 0 and tokens <= 20:
 			var x = randi_range(-10, 10)
 			var z = randi_range(-10, 10)
 			var radius = randf_range(0.5, 5.0)
@@ -32,6 +30,6 @@ func wave_loop() -> void:
 				radius = tokens
 				spawn_bubble(radius, x, z)
 				tokens = 0
-
+		await get_tree().create_timer(25.0).timeout
 func _ready() -> void:
 	wave_loop()

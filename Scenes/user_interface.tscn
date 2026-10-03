@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://djwpwc13qkkp"]
+
+[ext_resource type="Script" uid="uid://bq3yhw8yuvj00" path="res://Scenes/rich_text_label.gd" id="1_62x38"]
+
+[node name="user_interface" type="Control" unique_id=887280125]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=710545446]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 544.0
+offset_top = 1.0
+offset_right = 644.0
+offset_bottom = 24.0
+script = ExtResource("1_62x38")

@@ -2,7 +2,7 @@ extends RigidBody3D
 
 const BUBBLE = preload("res://Scenes/bubble.tscn")
 const bubbles_constant: = 0.05
-const gravity: = 9.8
+const gravity: = 10
 const stick_strength: = 100.0
 
 @export var radius: float = 1.0

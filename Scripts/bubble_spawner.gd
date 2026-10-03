@@ -25,7 +25,7 @@ func wave_loop() -> void:
 		GLOBAL.wave += 1
 		if GLOBAL.bubbles <= GLOBAL.MAX_BUBBLE:
 			print("buuble start")
-			var bubble_amount = randf_range(5,20)
+			var bubble_amount = randf_range(5,35)
 			for bubble in range(bubble_amount):
 				var x = randi_range(-50, 50)
 				var z = randi_range(-50, 50)

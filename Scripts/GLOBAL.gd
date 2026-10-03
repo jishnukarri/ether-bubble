@@ -25,8 +25,8 @@ var timer: float = 0.0
 func _process(delta: float) -> void:
 	timer += delta
 	
-	if timer >= 5.0:
-		score_per_second = (score - old_score)/5
+	if timer >= 2.0:
+		score_per_second = (score - old_score)/2
 		old_score = score
 		timer = 0.0
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg36bnbkgdja1" path="res://Scripts/bubble_spawner.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bbli4pncxfsq3" path="res://Scenes/level.tscn" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://cxa3sqvykgcp8" path="res://Scenes/Player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cxa3sqvykgcp8" path="res://Scenes/player.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node3D" unique_id=1613049826]
 
@@ -10,6 +10,7 @@
 script = ExtResource("1_8gbba")
 
 [node name="Level" parent="." unique_id=178789210 instance=ExtResource("1_bo1nx")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.054443836, 0, 0)
 
 [node name="Player" parent="." unique_id=1823564818 instance=ExtResource("2_8gbba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2554007, 0)

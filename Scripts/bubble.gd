@@ -81,8 +81,9 @@ func _on_body_entered(body: Node) -> void:
 			stuck_bubbles.append(body)
 	else:
 		stuck_bubbles.clear()
+		GLOBAL.bubbles -= 1
+		print("token removed as it has been popped tokens: %s"%[GLOBAL.bubbles])
 		queue_free()
-		GLOBAL.tokens -= 1 
 		
 func _on_body_exited(body: Node) -> void:
 	if body == self:

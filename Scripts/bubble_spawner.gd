@@ -1,14 +1,10 @@
 extends Node3D
 
-const MAX_WAVES = 100
-# for each wave random bubbles between 3-5 bubbles spawn in
 const BUBBLE = preload("res://Scenes/bubble.tscn")
-const height = 15
-
-var wave = 0
 
 
 func _finish_spawn(bubble, x, z) -> void:
+	var height = randi_range(15, 25)
 	bubble.global_position = Vector3(x, height, z)
 
 func spawn_bubble(radius, x, z) -> void:
@@ -18,30 +14,27 @@ func spawn_bubble(radius, x, z) -> void:
 	add_child.call_deferred(bubble)
 	call_deferred("_finish_spawn", bubble, x, z)
 	
-
-func wave_loop() -> void:
-	while wave <= MAX_WAVES:
-		print("starting loop for waves %s" %[wave])
-		var bubbles = randf_range(3,5)
-		wave += 1
-		GLOBAL.tokens += wave * bubbles
-		
-		while GLOBAL.tokens > 0 and GLOBAL.tokens <= 10:
+"""
 			var x = randi_range(-10, 10)
 			var z = randi_range(-10, 10)
 			var radius = randf_range(0.5, 5.0)
-			
-			if GLOBAL.tokens > radius:
-				print("bubble1")
-				spawn_bubble(radius, x, z)
-				print("bubble1")
-				GLOBAL.tokens -= radius
-			else:
-				radius = GLOBAL.tokens
-				print("bubble1")
-				spawn_bubble(radius, x, z)
-				print("bubble1")
-				GLOBAL.tokens = 0
-		await get_tree().create_timer(25.0).timeout
+"""
+func wave_loop() -> void:
+	while GLOBAL.wave >= 0:
+		print("wave started")
+		GLOBAL.wave += 1
+		if GLOBAL.bubbles <= GLOBAL.MAX_BUBBLE:
+			print("buuble start")
+			var bubble_amount = randf_range(5,20)
+			for bubble in range(bubble_amount):
+				var x = randi_range(-50, 50)
+				var z = randi_range(-50, 50)
+				var radius = randf_range(0.5, 5.0)
+				print("b spawn start")
+				if GLOBAL.bubbles > GLOBAL.MAX_BUBBLE:
+					break
+				spawn_bubble(radius,x,z)
+				GLOBAL.bubbles += 1
+			await get_tree().create_timer(10.0).timeout
 func _ready() -> void:
 	wave_loop()

@@ -1,6 +1,10 @@
 extends Node
 
 var tokens: = 0
+var bubbles = 0 # amount of bubbles present in the game at any time
+const MAX_BUBBLE = 50 # for each wave random bubbles between 3-5 bubbles spawn in
+var wave = 0
+
 var score: = 0
 var crit: = 0.10
 var super_crit: = 0.01

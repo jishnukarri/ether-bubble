@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bp8h84bu6fecl"]
 
-[ext_resource type="Script" uid="uid://d4jgirs56w3n1" path="res://UI_scripts/main_menu/main_menu.gd" id="1_48xlc"]
-[ext_resource type="Script" uid="uid://bif5f3lcwmomc" path="res://UI_scripts/main_menu/start_button.gd" id="2_1ehe0"]
+[ext_resource type="Script" uid="uid://d4jgirs56w3n1" path="res://Scripts/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://bif5f3lcwmomc" path="res://Scripts/start_button.gd" id="2_1ehe0"]
 
 [node name="main_menu" type="Control" unique_id=79608554]
 layout_mode = 3

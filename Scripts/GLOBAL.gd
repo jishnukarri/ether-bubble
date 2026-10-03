@@ -18,17 +18,17 @@ signal weapon_changed
 var current_weapon: = 1
 var weapon_equipped: = 0
 
-var old_score: float
-var score_per_second: float
+var old_score: int = 0
+var score_per_second: float = 0.0
+var timer: float = 0.0
 
-func _ready() -> void:
-	old_score = score
+func _process(delta: float) -> void:
+	timer += delta
 	
-	while true:
-		await get_tree().create_timer(5.0)
-		
+	if timer >= 5.0:
 		score_per_second = (score - old_score)/5
 		old_score = score
+		timer = 0.0
 
 func toggle() -> void:
 	weapon_equipped = 1 - weapon_equipped

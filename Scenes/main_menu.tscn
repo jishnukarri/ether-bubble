@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bp8h84bu6fecl"]
+
+[ext_resource type="Script" uid="uid://d4jgirs56w3n1" path="res://UI_scripts/main_menu/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://bif5f3lcwmomc" path="res://UI_scripts/main_menu/start_button.gd" id="2_1ehe0"]
+
+[node name="main_menu" type="Control" unique_id=79608554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48xlc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1179198916]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+color = Color(0.6065371, 0.42253992, 0.50772405, 1)
+
+[node name="button_manager" type="Control" parent="." unique_id=578520690]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start_button" type="Button" parent="button_manager" unique_id=891634956]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 272.0
+offset_right = 667.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 36
+text = "START"
+script = ExtResource("2_1ehe0")
+
+[node name="title" type="Label" parent="." unique_id=467397887]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 122.0
+offset_right = 813.0
+offset_bottom = 209.0
+theme_override_font_sizes/font_size = 63
+text = "ether bubble"
+
+[connection signal="pressed" from="button_manager/start_button" to="." method="_on_start_button_pressed"]

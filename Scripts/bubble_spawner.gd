@@ -2,7 +2,6 @@ extends Node3D
 
 const BUBBLE = preload("res://Scenes/bubble.tscn")
 
-var game_init: bool = false
 
 func _finish_spawn(bubble, x, z) -> void:
 	var height = randi_range(15, 25)
@@ -20,12 +19,7 @@ func wave_loop() -> void:
 	while GLOBAL.wave >= 0:
 		GLOBAL.wave += 1
 		if GLOBAL.bubbles <= GLOBAL.MAX_BUBBLE:
-			var bubble_amount = randf_range(5,35)
-			if game_init:
-				bubble_amount = randf_range(5,35)
-			else:
-				bubble_amount = randf_range(45,50)
-				game_init = true
+			var bubble_amount = randf_range(45,50)
 			for bubble in range(bubble_amount):
 				var x = randi_range(-50, 50)
 				var z = randi_range(-50, 50)

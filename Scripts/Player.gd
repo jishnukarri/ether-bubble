@@ -21,8 +21,8 @@ func _equip(index: int) -> void:
 		current_weapon.queue_free()
 	
 	current_weapon = WEAPONS[index - 1].instantiate()
-	$Camera/Weapon_Holder.add_child(current_weapon)
-	$Camera/Weapon_Holder.get_child(0).position = Vector3(0, 0, -2)
+	$Weapon_Holder.add_child(current_weapon)
+	$Weapon_Holder.get_child(0).position = Vector3(1.5, 0, -2)
 
 func _on_weapon_changed(weapon: int) -> void:
 	if current_weapon:
@@ -36,6 +36,12 @@ func _input(event):
 		if Input.is_action_pressed("drag"):
 			rotate_y(-event.relative.x * mouse_sensitivity)
 			camera.rotation.x = clamp(camera.rotation.x - mouse_movement.y * mouse_sensitivity, deg_to_rad(-80), deg_to_rad(80))
+	if Input.is_action_just_pressed("zoom_out"):
+		camera.position.z = clamp(camera.position.z + 0.75, 0, 4)
+		camera.position.y = clamp(camera.position.y + 1, 0, 3)
+	elif Input.is_action_just_pressed("zoom_in"):
+		camera.position.z = clamp(camera.position.z - 0.75, 0, 4)
+		camera.position.y = clamp(camera.position.y - 1, 0, 3)
 	if Input.is_action_just_pressed("equip"):
 		print("weapon")
 		GLOBAL._set_weapon(GLOBAL.current_weapon)

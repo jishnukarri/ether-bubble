@@ -20,8 +20,8 @@ GLOBAL="*uid://cekthp8hcl8b5"
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 

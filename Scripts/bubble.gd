@@ -48,10 +48,10 @@ func pop() -> void:
 	var points = GLOBAL.point_bonus + radius
 	if GLOBAL.super_crit:
 		if randf() < GLOBAL.super_crit:
-			GLOBAL.score += points * GLOBAL.super_crit_multiplier
+			GLOBAL.score = int(points * GLOBAL.super_crit_multiplier)
 	elif GLOBAL.crit:
 		if randf() < GLOBAL.crit:
-			GLOBAL.score += points * GLOBAL.crit_multiplier
+			GLOBAL.score = int(points * GLOBAL.crit_multiplier)
 	print(GLOBAL.score)
 	queue_free()
 
@@ -68,8 +68,8 @@ func split() -> void:
 		bubble_1.radius = new_radius
 		bubble_2.radius = new_radius
 		
-		bubble_1.global_position = global_position + Vector3(0.2, position.y, position.z)
-		bubble_2.global_position = global_position - Vector3(0.2, position.y, position.z)
+		bubble_1.global_position = global_position + Vector3(new_radius, 0, 0)
+		bubble_2.global_position = global_position - Vector3(new_radius, 0, 0)
 
 func _on_body_entered(body: Node) -> void:
 	if body == self:

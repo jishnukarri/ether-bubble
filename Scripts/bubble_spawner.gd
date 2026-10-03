@@ -22,10 +22,8 @@ func spawn_bubble(radius, x, z) -> void:
 """
 func wave_loop() -> void:
 	while GLOBAL.wave >= 0:
-		print("wave started")
 		GLOBAL.wave += 1
 		if GLOBAL.bubbles <= GLOBAL.MAX_BUBBLE:
-			print("buuble start")
 			var bubble_amount = randf_range(5,35)
 			if game_init:
 				bubble_amount = randf_range(5,35)
@@ -36,7 +34,6 @@ func wave_loop() -> void:
 				var x = randi_range(-50, 50)
 				var z = randi_range(-50, 50)
 				var radius = randf_range(0.5, 5.0)
-				print("b spawn start")
 				if GLOBAL.bubbles > GLOBAL.MAX_BUBBLE:
 					break
 				spawn_bubble(radius,x,z)

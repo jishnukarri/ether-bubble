@@ -48,12 +48,11 @@ func pop() -> void:
 	var points = GLOBAL.point_bonus + radius
 	if GLOBAL.super_crit:
 		if randf() < GLOBAL.super_crit:
-			GLOBAL.score += int(points * GLOBAL.super_crit_multiplier)
+			points *= GLOBAL.super_crit_multiplier
 	elif GLOBAL.crit:
 		if randf() < GLOBAL.crit:
-			GLOBAL.score += int(points * GLOBAL.crit_multiplier)
-	else:
-		GLOBAL.score += int(points)
+			points *= GLOBAL.crit_multiplier
+	GLOBAL.score += int(points)
 	print(GLOBAL.score)
 	queue_free()
 

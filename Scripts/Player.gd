@@ -3,9 +3,32 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+const WEAPONS = [
+	preload("res://Scenes/bone_scythe.tscn")
+]
+
 @onready var camera = $Camera
-#test
+
 var mouse_sensitivity = 0.01
+var current_weapon_index: = 0
+var current_weapon :  Node3D
+
+func _ready() -> void:
+	GLOBAL.weapon_changed.connect(_on_weapon_changed)
+
+func _equip(index: int) -> void:
+	if current_weapon:
+		current_weapon.queue_free()
+	
+	current_weapon = WEAPONS[index - 1].instantiate()
+	$Camera/Weapon_Holder.add_child(current_weapon)
+	$Camera/Weapon_Holder.get_child(0).position = Vector3(0, 0, -2)
+
+func _on_weapon_changed(weapon: int) -> void:
+	if current_weapon:
+		current_weapon.queue_free()
+	if weapon >= 1:
+		_equip(weapon)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -13,6 +36,9 @@ func _input(event):
 		if Input.is_action_pressed("drag"):
 			rotate_y(-event.relative.x * mouse_sensitivity)
 			camera.rotation.x = clamp(camera.rotation.x - mouse_movement.y * mouse_sensitivity, deg_to_rad(-80), deg_to_rad(80))
+	if Input.is_action_just_pressed("equip"):
+		print("weapon")
+		GLOBAL._set_weapon(GLOBAL.current_weapon)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

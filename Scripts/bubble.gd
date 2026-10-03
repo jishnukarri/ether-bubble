@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+const BUBBLE = preload("res://Scenes/bubble.tscn")
 const bubbles_constant: = 0.05
 const gravity: = 9.8
 const stick_strength: = 100.0
@@ -43,9 +44,32 @@ func _physics_process(_delta: float) -> void:
 	for body in stuck_bubbles:
 		stick_bubbles(body)
 
-func _award_points(body: Node) -> void:
-	var points = body.point_boost + radius
-	GLOBAL.score += points
+func pop() -> void:
+	var points = GLOBAL.point_bonus + radius
+	if GLOBAL.super_crit:
+		if randf() < GLOBAL.super_crit:
+			GLOBAL.score += points * GLOBAL.super_crit_multiplier
+	elif GLOBAL.crit:
+		if randf() < GLOBAL.crit:
+			GLOBAL.score += points * GLOBAL.crit_multiplier
+	print(GLOBAL.score)
+	queue_free()
+
+func split() -> void:
+	if randf() < GLOBAL.split_chance:
+		var new_radius = radius / 2
+		
+		var bubble_1 = BUBBLE.instantiate()
+		var bubble_2 = BUBBLE.instantiate()
+		
+		get_parent().add_child(bubble_1)
+		get_parent().add_child(bubble_2)
+		
+		bubble_1.radius = new_radius
+		bubble_2.radius = new_radius
+		
+		bubble_1.global_position = global_position + Vector3(0.2, position.y, position.z)
+		bubble_2.global_position = global_position - Vector3(0.2, position.y, position.z)
 
 func _on_body_entered(body: Node) -> void:
 	if body == self:

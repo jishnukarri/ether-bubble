@@ -15,11 +15,7 @@ func spawn_bubble(radius, x, z) -> void:
 	add_child.call_deferred(bubble)
 	call_deferred("_finish_spawn", bubble, x, z)
 	
-"""
-			var x = randi_range(-10, 10)
-			var z = randi_range(-10, 10)
-			var radius = randf_range(0.5, 5.0)
-"""
+
 func wave_loop() -> void:
 	while GLOBAL.wave >= 0:
 		GLOBAL.wave += 1

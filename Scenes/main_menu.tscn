@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_48xlc")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1427310857]
+[node name="3d background" type="SubViewportContainer" parent="." unique_id=1427310857]
 layout_mode = 0
 offset_left = -5.0
 offset_top = -1.0
@@ -26,13 +26,13 @@ offset_right = 507.0
 offset_bottom = 511.0
 scale = Vector2(2.2437954, 1.2771959)
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=157054303]
+[node name="SubViewport" type="SubViewport" parent="3d background" unique_id=157054303]
 handle_input_locally = false
 gui_disable_input = true
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Main" parent="SubViewportContainer/SubViewport" unique_id=1613049826 instance=ExtResource("2_ce3w2")]
+[node name="Main" parent="3d background/SubViewport" unique_id=1613049826 instance=ExtResource("2_ce3w2")]
 
 [node name="title" type="Label" parent="." unique_id=467397887]
 layout_mode = 0

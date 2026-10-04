@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://8kbkwlc2k3f2"]
+
+[ext_resource type="PackedScene" uid="uid://dwxjn0fklqqj3" path="res://Textures/Models/weapons/bubble_secptre.glb" id="1_fqpsi"]
+
+[node name="bubble_secptre" unique_id=2064024988 instance=ExtResource("1_fqpsi")]
+
+[node name="Cone_001" parent="." index="0" unique_id=400691914]
+visible = false
+
+[node name="Cone_003" parent="." index="1" unique_id=926656375]
+visible = false
+
+[node name="Cone_004" parent="." index="2" unique_id=920828808]
+visible = false
+
+[node name="Diamond_002" parent="." index="3" unique_id=20763756]
+transform = Transform3D(1.652438, 0, 0, 0, 1.652438, 0, 0, 0, 1.652438, 0.094517946, 37.81098, -0.2655325)
+metadata/_edit_group_ = true
+
+[node name="Diamond_005" parent="." index="4" unique_id=865956013]
+transform = Transform3D(1.652438, 0, 0, 0, 1.652438, 0, 0, 0, 1.652438, 0.07977414, 48.54818, -0.26643634)
+metadata/_edit_group_ = true
+
+[node name="Sceptre head" parent="." index="5" unique_id=1103064436]
+transform = Transform3D(2.9050777e-06, 8.123185, 6.1328336e-07, 8.123185, -2.9050777e-06, -6.132836e-07, -6.1328336e-07, 6.132836e-07, -8.123185, -0.43730235, 25.554962, -5.4606776)
+metadata/_edit_group_ = true
+
+[node name="Spectre collar" parent="." index="6" unique_id=564849693]
+transform = Transform3D(0, 0, -1.1589464, 0, 1.1589464, 0, 1.1589464, 0, 0, -0.40496898, 26.775711, -0.14974976)
+metadata/_edit_group_ = true
+
+[node name="Spectre handle" parent="." index="7" unique_id=196243922]
+transform = Transform3D(0.16243787, 0, 0.9891066, 0, 3.6406345, 0, -0.9891066, 0, 0.16243787, 0.38631785, 0.77225876, 0.02812624)
+metadata/_edit_group_ = true
+
+[node name="Spectre handle designs" parent="." index="8" unique_id=1892357494]
+transform = Transform3D(0.16243787, 0, 0.9891066, 0, 3.6406345, 0, -0.9891066, 0, 0.16243787, 0.38631785, 0.77225876, 0.02812624)
+metadata/_edit_group_ = true
+
+[node name="Sphere" parent="." index="9" unique_id=502763950]
+transform = Transform3D(1.7680403, 0, 0, 0, 1.7680403, 0, 0, 0, 1.7680403, 0.03918004, 41.530373, -0.22798395)
+metadata/_edit_group_ = true
+
+[node name="Sphere_001" parent="." index="10" unique_id=734087311]
+transform = Transform3D(-1.4770576, 0, 0, 0, -1.4770576, 0, 0, 0, -1.4770576, -0.06372142, 26.697456, -0.23598576)
+metadata/_edit_group_ = true
+
+[node name="Sphere_002" parent="." index="11" unique_id=919569393]
+transform = Transform3D(2.0624785, 0, 0, 0, 2.0624785, 0, 0, 0, 2.0624785, 0.4862439, -8.715614, -0.1695478)
+metadata/_edit_group_ = true
+
+[node name="Sphere_003" parent="." index="12" unique_id=1583881281]
+transform = Transform3D(2.0624785, 0, 0, 0, 2.0624785, 0, 0, 0, 2.0624785, 0.4862439, -8.715614, -0.1695478)
+metadata/_edit_group_ = true
+
+[node name="Sphere_004" parent="." index="13" unique_id=178412123]
+transform = Transform3D(2.0624785, 0, 0, 0, 2.0624785, 0, 0, 0, 2.0624785, 0.4862439, -8.715614, -0.1695478)
+metadata/_edit_group_ = true

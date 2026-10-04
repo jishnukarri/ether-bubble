@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5jkl4fxeiocd"]
 
-[ext_resource type="Script" uid="uid://n3kw7wqr4d6" path="res://Scripts/Bone_Scythe.gd" id="1_er6cq"]
+[ext_resource type="Script" uid="uid://n3kw7wqr4d6" path="res://Scripts/weapons/Bone_Scythe.gd" id="1_er6cq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yf5fn"]
 size = Vector3(0.25, 3, 0.25)

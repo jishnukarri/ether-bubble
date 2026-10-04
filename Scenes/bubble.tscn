@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bshb1r0me0drk"]
 
-[ext_resource type="Script" uid="uid://cl5rowdc25gjo" path="res://Scripts/bubble.gd" id="1_amq2t"]
+[ext_resource type="Script" uid="uid://cl5rowdc25gjo" path="res://Scripts/bubbles/bubble.gd" id="1_amq2t"]
 
 [sub_resource type="Shader" id="Shader_fu76k"]
 code = "shader_type spatial;

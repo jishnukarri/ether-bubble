@@ -18,3 +18,10 @@ offset_top = 1.0
 offset_right = 644.0
 offset_bottom = 24.0
 script = ExtResource("1_62x38")
+
+[node name="weapon_container" type="HBoxContainer" parent="." unique_id=1623265472]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 590.0
+offset_right = 891.0
+offset_bottom = 648.0

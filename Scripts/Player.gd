@@ -4,7 +4,9 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 const WEAPONS = [
-	preload("res://Scenes/bone_scythe.tscn")
+	preload("res://Scenes/weapons/bone_scythe.tscn"),
+	preload("res://Scenes/weapons/bubble_secptre.tscn"),
+	preload("res://Scenes/weapons/bubble_star.tscn")
 ]
 
 @onready var camera = $Camera

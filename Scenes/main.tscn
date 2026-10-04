@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cg36bnbkgdja1" path="res://Scripts/bubbles/bubble_spawner.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bbli4pncxfsq3" path="res://Scenes/level.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://dxbsmf1vwprc6" path="res://Scripts/clouds/cloud_spawner.gd" id="1_kry3j"]
-[ext_resource type="PackedScene" uid="uid://cxa3sqvykgcp8" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cxa3sqvykgcp8" path="res://Scenes/Player.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://djwpwc13qkkp" path="res://Scenes/user_interface.tscn" id="4_jjvhh"]
 
 [node name="Main" type="Node3D" unique_id=1613049826]

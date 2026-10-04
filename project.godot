@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/godit/plugin.cfg", "res://addons/godot_s
 [global_group]
 
 Bubble="Bubbles"
+Slime=""
 
 [input]
 

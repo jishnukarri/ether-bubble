@@ -16,17 +16,6 @@ func _update_size() -> void:
 	$Mesh.mesh.height = radius * 2.0
 	$Collision.shape.radius = radius
 
-func _ready() -> void:
-	contact_monitor = true
-	max_contacts_reported = 8
-	
-	$Mesh.mesh = $Mesh.mesh.duplicate()
-	$Collision.shape = $Collision.shape.duplicate()
-	
-	_update_size()
-	
-	downward_force = gravity / radius * bubbles_constant
-
 func stick_bubbles(body: RigidBody3D) -> void:
 	var direction = body.global_position - global_position
 	var distance = direction.length()
@@ -36,13 +25,6 @@ func stick_bubbles(body: RigidBody3D) -> void:
 	var force = direction.normalized() * displacement * stick_strength
 	
 	apply_central_force(-force)
-
-func _physics_process(_delta: float) -> void: 
-	downward_force = gravity / radius * bubbles_constant
-	apply_central_force(Vector3.DOWN * downward_force)
-	
-	for body in stuck_bubbles:
-		stick_bubbles(body)
 
 func pop() -> void:
 	var points = GLOBAL.point_bonus + radius
@@ -72,20 +54,55 @@ func split() -> void:
 		bubble_1.global_position = global_position + Vector3(new_radius, 0, 0)
 		bubble_2.global_position = global_position - Vector3(new_radius, 0, 0)
 
+func grow(size_mult: float) -> void:
+	radius *= size_mult
+	_update_size()
+
+func spawn(bubble_radius: float, bubble_position: Vector3) -> void:
+	var bubble = BUBBLE.instantiate()
+	bubble.radius = bubble_radius
+	bubble.position = bubble_position
+
+func slime(size_mult: float) -> void:
+	add_to_group("Slime")
+
+func merge(body: Node) -> void:
+	var merged_radius = radius + body.radius
+	var merged_position = (position + body.position) / 2
+	
+	spawn(merged_radius, merged_position)
+	
+	body.queue_free()
+	queue_free()
+
+func _ready() -> void:
+	contact_monitor = true
+	max_contacts_reported = 8
+	
+	$Mesh.mesh = $Mesh.mesh.duplicate()
+	$Collision.shape = $Collision.shape.duplicate()
+	
+	_update_size()
+	
+	downward_force = gravity / radius * bubbles_constant
+
+func _physics_process(_delta: float) -> void: 
+	downward_force = gravity / radius * bubbles_constant
+	apply_central_force(Vector3.DOWN * downward_force)
+	
+	for body in stuck_bubbles:
+		stick_bubbles(body)
+
 func _on_body_entered(body: Node) -> void:
-	if body == self:
-		return
-	elif body.is_in_group("Bubble"):
+	if body.is_in_group("Bubble"):
 		if body not in stuck_bubbles:
 			stuck_bubbles.append(body)
+		if body.is_in_group("Slime"):
+			merge(body)
 	else:
-		stuck_bubbles.clear()
 		GLOBAL.bubbles -= 1
-		print("token removed as it has been popped tokens: %s"%[GLOBAL.bubbles])
 		queue_free()
 		
 func _on_body_exited(body: Node) -> void:
-	if body == self:
-		return
-	elif body in stuck_bubbles:
+	if body in stuck_bubbles:
 		stuck_bubbles.erase(body)

@@ -11,9 +11,9 @@ func spawnCloud(cloud) -> void:
 	var c_cloud = cloud.instantiate()
 
 	# position
-	var x = randf_range(-50, 50)
+	var x = randf_range(GLOBAL.x_min, GLOBAL.x_max)
 	var y = randf_range(20, 25)
-	var z = randf_range(-50, 50)
+	var z = randf_range(GLOBAL.y_min, GLOBAL.y_max)
 	c_cloud.position = Vector3(x, y, z)
 
 	# scale: wide and flat, so y gets a smaller range

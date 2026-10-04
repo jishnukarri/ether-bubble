@@ -15,6 +15,14 @@ func spawn_bubble(radius, x, z) -> void:
 	call_deferred("_finish_spawn", bubble, x, z)
 	
 
+func inital_wave_loop() -> void:
+	for i in range(randf_range(GLOBAL.MIN_CLOUDS,GLOBAL.MAX_CLOUDS)):
+		var x = randi_range(GLOBAL.x_min, GLOBAL.x_max)
+		var z = randi_range(GLOBAL.y_min, GLOBAL.y_max)
+		var radius = randf_range(0.5, 5.0)		
+		spawn_bubble(radius,x,z)
+		GLOBAL.bubbles += 1
+		
 func wave_loop() -> void:
 	while GLOBAL.wave >= 0:
 		GLOBAL.wave += 1
@@ -28,6 +36,9 @@ func wave_loop() -> void:
 					break
 				spawn_bubble(radius,x,z)
 				GLOBAL.bubbles += 1
-			await get_tree().create_timer(10.0).timeout
+		await get_tree().create_timer(10.0).timeout
 func _ready() -> void:
+	inital_wave_loop()
+	
+func _process(delta: float) -> void:
 	wave_loop()

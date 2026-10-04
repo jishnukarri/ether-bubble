@@ -64,6 +64,7 @@ func spawn(bubble_radius: float, bubble_position: Vector3) -> void:
 	bubble.position = bubble_position
 
 func slime(size_mult: float) -> void:
+	
 	add_to_group("Slime")
 
 func merge(body: Node) -> void:

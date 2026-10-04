@@ -11,6 +11,7 @@ const stick_strength: = 100.0
 var downward_force : float
 var volume : float
 var stuck_bubbles: Array[RigidBody3D] = []
+var bubble_id: int
 
 func _update_size() -> void:
 	$Mesh.mesh.radius = radius
@@ -64,13 +65,19 @@ func spawn(bubble_radius: float, bubble_position: Vector3) -> void:
 	bubble.radius = bubble_radius
 	bubble.position = bubble_position
 
-func slime(size_mult: float) -> void:
-	$Mesh.material_override = SLIME_SHADER
+func slime() -> void:
+	var material = ShaderMaterial.new()
+	material.shader = SLIME_SHADER
+	$Mesh.material_override = material
+	
 	add_to_group("Slime")
 
 func merge(body: Node) -> void:
+	if bubble_id > body.bubble_id:
+		return
+	
 	var merged_radius = radius + body.radius
-	var merged_position = (position + body.position) / 2
+	var merged_position = position
 	
 	spawn(merged_radius, merged_position)
 	
@@ -78,6 +85,7 @@ func merge(body: Node) -> void:
 	queue_free()
 
 func _ready() -> void:
+	bubble_id = get_instance_id()
 	contact_monitor = true
 	max_contacts_reported = 8
 	
@@ -99,8 +107,8 @@ func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Bubble"):
 		if body not in stuck_bubbles:
 			stuck_bubbles.append(body)
-		if body.is_in_group("Slime"):
-			merge(body)
+	if body.is_in_group("Slime"):
+		merge(body)
 	else:
 		GLOBAL.bubbles -= 1
 		queue_free()

@@ -42,8 +42,8 @@ func _input(event):
 		camera.position.z = clamp(camera.position.z + 0.75, 0, 4)
 		camera.position.y = clamp(camera.position.y + 1, 0, 3)
 	elif Input.is_action_just_pressed("zoom_in"):
-		camera.position.z = clamp(camera.position.z - 0.75, 0, 4)
-		camera.position.y = clamp(camera.position.y - 1, 0, 3)
+		camera.position.z = clamp(camera.position.z - 0.75, 0, 6)
+		camera.position.y = clamp(camera.position.y - 1, 0, 4.5)
 	if Input.is_action_just_pressed("equip"):
 		print("weapon")
 		GLOBAL._set_weapon(GLOBAL.current_weapon)

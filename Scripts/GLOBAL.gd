@@ -32,7 +32,7 @@ var point_bonus: = 1
 
 signal weapon_changed
 
-var current_weapon: = 1
+var current_weapon: = 2
 var weapon_equipped: = 0
 
 var old_score: int = 0

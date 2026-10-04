@@ -21,7 +21,7 @@ GLOBAL="*uid://cekthp8hcl8b5"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="ignore"
 
 [editor_plugins]
 

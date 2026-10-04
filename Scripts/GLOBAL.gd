@@ -1,9 +1,14 @@
 extends Node
 
+const MIN_CLOUDS = 80
+const MAX_CLOUDS = 120
+var clouds = 0
+
 var tokens: = 0
 var bubbles = 0 # amount of bubbles present in the game at any time
 const MAX_BUBBLE = 50 # for each wave random bubbles between 3-5 bubbles spawn in
 var wave = 0
+
 
 var score: = 0
 var crit: = 0.10
@@ -21,6 +26,7 @@ var weapon_equipped: = 0
 var old_score: int = 0
 var score_per_second: float = 0.0
 var timer: float = 0.0
+
 
 func _process(delta: float) -> void:
 	timer += delta

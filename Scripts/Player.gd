@@ -9,7 +9,8 @@ const WEAPONS = [
 	preload("res://Scenes/weapons/bubble_star.tscn")
 ]
 
-@onready var camera = $Camera
+@onready var camera = $Camera_Holder/Camera
+@onready var camera_holder = $Camera_Holder
 
 var mouse_sensitivity = 0.01
 var current_weapon_index: = 0
@@ -37,7 +38,7 @@ func _input(event):
 		var mouse_movement = event.relative
 		if Input.is_action_pressed("drag"):
 			rotate_y(-event.relative.x * mouse_sensitivity)
-			camera.rotation.x = clamp(camera.rotation.x - mouse_movement.y * mouse_sensitivity, deg_to_rad(-80), deg_to_rad(80))
+			camera_holder.rotation.x = clamp(camera_holder.rotation.x - mouse_movement.y * mouse_sensitivity, deg_to_rad(-80), deg_to_rad(80))
 	if Input.is_action_just_pressed("zoom_out"):
 		camera.position.z = clamp(camera.position.z + 0.75, 0, 4)
 		camera.position.y = clamp(camera.position.y + 1, 0, 3)

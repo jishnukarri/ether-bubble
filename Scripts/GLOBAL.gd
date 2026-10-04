@@ -6,7 +6,8 @@ var clouds = 0
 
 var tokens: = 0
 var bubbles = 0 # amount of bubbles present in the game at any time
-const MAX_BUBBLE = 50 # for each wave random bubbles between 3-5 bubbles spawn in
+const MIN_BUBBLE = 100
+const MAX_BUBBLE = 120 # for each wave random bubbles between 3-5 bubbles spawn in
 var wave = 0
 
 

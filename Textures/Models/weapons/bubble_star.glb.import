@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bmre25vsahfot"
-path="res://.godot/imported/bubble_star.glb-2fb67c803ad965f4c5dd2273db34787e.scn"
+path="res://.godot/imported/bubble_star.glb-bc234e3433075f398e3583b9310a0d22.scn"
 
 [deps]
 
-source_file="res://Textures/Models/bubble_star.glb"
-dest_files=["res://.godot/imported/bubble_star.glb-2fb67c803ad965f4c5dd2273db34787e.scn"]
+source_file="res://Textures/Models/weapons/bubble_star.glb"
+dest_files=["res://.godot/imported/bubble_star.glb-bc234e3433075f398e3583b9310a0d22.scn"]
 
 [params]
 

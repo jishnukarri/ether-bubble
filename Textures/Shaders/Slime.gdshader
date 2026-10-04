@@ -1,15 +1,14 @@
-shader_type canvas_item;
+shader_type spatial;
 
-uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
-
-uniform float pixel_size = 2.0;
+uniform vec3 slime_color : source_color = vec3(0.1, 1.0, 0.2);
+uniform float shine = 3.0;
 
 void fragment() {
-	vec2 uv = SCREEN_UV;
+	float rim = 1.0 - abs(dot(NORMAL, VIEW));
+	rim = pow(rim, 3.0);
 
-	vec2 pixels = 1.0 / SCREEN_PIXEL_SIZE;
+	ALBEDO = slime_color + vec3(rim) * shine;
 
-	uv = floor(uv * pixels / pixel_size) * pixel_size / pixels;
-
-	COLOR = texture(screen_texture, uv);
+	ROUGHNESS = 0.15;
+	SPECULAR = 1.0;
 }

@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+const SLIME_SHADER = preload("res://Textures/Shaders/Slime.gdshader")
 const BUBBLE = preload("res://Scenes/bubble.tscn")
 const bubbles_constant: = 0.05
 const gravity: = 10
@@ -64,7 +65,7 @@ func spawn(bubble_radius: float, bubble_position: Vector3) -> void:
 	bubble.position = bubble_position
 
 func slime(size_mult: float) -> void:
-	
+	$Mesh.material_override = SLIME_SHADER
 	add_to_group("Slime")
 
 func merge(body: Node) -> void:

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dut6osvqgmyt8"]
+
+[sub_resource type="GDScript" id="GDScript_t6yyv"]
+script/source = "extends Node3D
+"
+
+[node name="Bubble" type="Node3D" unique_id=2097856775]
+script = SubResource("GDScript_t6yyv")

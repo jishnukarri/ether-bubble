@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://cu2yx8e1qp8g2"]
-
-[ext_resource type="PackedScene" uid="uid://c8luer4uawkb8" path="res://Textures/Models/clouds/cloud_model_1.glb" id="1_iced8"]
-
-[node name="cloud_model_1" unique_id=1642532405 instance=ExtResource("1_iced8")]
-
-[node name="cloud model 1" parent="." index="0" unique_id=1107102968]
-transform = Transform3D(0.5230291, 0, 0, 0, 0.5230291, 0, 0, 0, 0.5230291, 0, 0, 0)
